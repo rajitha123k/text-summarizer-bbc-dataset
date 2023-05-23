@@ -1,4 +1,4 @@
-# text-summarizer-bbc-dataset
+# Text Summarizer BBC Dataset
 In today's digital age, we are constantly bombarded with an overwhelming amount of information, making it challenging to stay informed and up-to-date with the latest news and developments. Traditional news articles can be lengthy and time-consuming to read, making it difficult for busy individuals to keep abreast of the world's top stories.
 The goal of this project is to develop a machine learning model that can generate accurate and concise summaries of news articles from various sources, providing individuals with quick and easy-to-digest information about the day's top stories. By summarizing the key points and themes of news articles, this model will facilitate keeping individuals informed and up-to-date with important news from around the world, enabling them to make better-informed decisions.
 
@@ -9,11 +9,12 @@ The goal of this project is to develop a machine learning model that can generat
 <summary>(click to expand)</summary>
     
   * [Libraries](#libraries)
-  * [Getting to know the data](#getting to know the data)
-  * [Demo](#demo)
-  * [License](#license)  
-  * [Disclaimer](#disclaimer)
-  * [Questions](#questions)
+  * [Data](#data)
+  * [Preprocessing](#preprocessing)
+  * [EDA](#eda)  
+  * [Model](#model)
+  * [Testing](#testing)
+  * [Conclusion](#conclusion)
 
 </details>
 <!-- ⛔️ MD-MAGIC-EXAMPLE:END -->
@@ -27,11 +28,11 @@ pip install lightning
 pip install 'transformers[torch]'
 ```
 
-## Getting to know the data
+## Data
 
 We have 2225 data points, which consists of 5 categories in total. The five categories we want to identify are Sports, Business, Politics, Tech, and Entertainment.
 
-## Data Cleaning and Preprocessing
+## Preprocessing
 
 Data cleaning and preprocessing are crucial steps in preparing a dataset for text summarization tasks. Here are the steps I followed to clean and preprocess the BBC News dataset for a text summarizer:
 
@@ -84,13 +85,13 @@ df['Articles']=df['Articles'].str.encode('ascii','ignore').str.decode('ascii')
 df['Summary']=df['Summary'].str.encode('ascii','ignore').str.decode('ascii')
 ```
 
-## Exploratory Data Analysis (EDA)
+## EDA
 
 After our data pre-processing, we have a data frame which consists of 5 different categories:
 ['tech', 'sport', 'politics', 'entertainment', 'business']
 The columns consisted of 3 features: Category, Articles and Summaries. We had a total of 2225 rows. Then we tokenized the articles and summaries using T5Tokenizer and found out that most of the tokens in articles counted between 0 to 1000 where max is around 500 and most of the tokens in summaries counted between 0 to 500 where max is around 200.
 
-## Data Model
+## Model
 
 The init method of the class is used to define the architecture of the model, typically by instantiating the various layers of the model and assigning them as attributes of the class.
 The forward method is responsible for performing the forward pass of the data through the model. The forward method takes in the input data and applies the model's layers to the input in order to produce the output. The forward method should implement the logic of the model, such as applying the input through a series of layers and returning the output.
